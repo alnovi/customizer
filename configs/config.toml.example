@@ -1,0 +1,32 @@
+[global]
+certFile = {{GLOBAL_CERT_FILE}}
+keyFile = {{GLOBAL_KEY_FILE}}
+
+[httpServer]
+host = {{HTTP_SERVER_HOST}}
+port = {{HTTP_SERVER_PORT}}
+timeout = {{HTTP_SERVER_TIMEOUT}}
+
+[storage]
+    [storage.mongo]
+    host = {{STORAGE_MONGO_HOST}}
+    port = {{STORAGE_MONGO_PORT}}
+    database = {{STORAGE_MONGO_DATABASE}}
+    user = {{STORAGE_MONGO_USER}}
+    password = {{STORAGE_MONGO_PASSWORD}}
+    timeout = {{STORAGE_MONGO_TIMEOUT}}
+
+    [storage.redis]
+    host = {{STORAGE_REDIS_HOST}}
+    port = {{STORAGE_REDIS_PORT}}
+    database = {{STORAGE_REDIS_DATABASE}}
+    password = {{STORAGE_REDIS_PASSWORD}}
+
+[log]
+level = {{LOG_LEVEL}}
+format = {{LOG_FORMAT}}
+
+[sentry]
+url = {{SENTRY_URL}}
+debug = {{SENTRY_DEBUG}}
+timeout = {{SENTRY_TIMEOUT}}
