@@ -1,0 +1,32 @@
+[global]
+certFile = ""
+keyFile = ""
+
+[httpServer]
+host = "0.0.0.0"
+port = 80
+timeout = 10
+
+[storage]
+    [storage.mongo]
+    host = "mongo"
+    port = 27017
+    database = "customizer"
+    user = "customizer"
+    password = "secret"
+    timeout = 10
+
+    [storage.redis]
+    host = "redis"
+    port = 6379
+    database = 0
+    password = "secret"
+
+[log]
+level = "error"
+format = "json"
+
+[sentry]
+url = ""
+debug = false
+timeout = 10

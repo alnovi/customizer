@@ -1,30 +1,51 @@
 #!/usr/bin/make
 
-DC=docker-compose -f ./build/docker-compose.yml
+DC_PROD=docker-compose -f ./docker-compose.yml
+DC_DEV=docker-compose -f ./docker-compose.dev.yml
 
 .SILENT:
 .ONESHELL:
-.PHONY: go-run prod-up dev-up dev-build ps stop logs
+.PHONY: go-run up-prod build-prod up-dev build-dev ps stop exec logs
 
-go-run:
-	go run ./cmd/customizer/
+#################################################
+# PROD ##########################################
+#################################################
 
 prod-up:
-	${DC} up -d --build --no-cache mongo redis customizer
+	${DC_PROD} up -d
+
+prod-build:
+	${DC_PROD} build --no-cache
+
+prod-ps:
+	${DC_PROD} ps
+
+prod-stop:
+	${DC_PROD} stop
+
+#################################################
+# DEV ###########################################
+#################################################
 
 dev-up:
-	${DC} up -d mongo redis
+	${DC_DEV} up -d
 
 dev-build:
-	${DC} up -d --build --no-cache mongo redis
+	${DC_DEV} build --no-cache
 
-ps:
-	${DC} ps
+dev-ps:
+	${DC_DEV} ps
 
-stop:
-	${DC} stop
+dev-stop:
+	${DC_DEV} stop
 
-logs:
-	${DC} logs ${s}
+dev-go-run:
+	${DC_DEV} exec golang go run ./cmd/customizer
 
-.DEFAULT_GOAL := go-run
+dev-node-install:
+	${DC_DEV} exec node yarn install
+
+dev-node-build:
+	${DC_DEV} exec node yarn build
+
+.DEFAULT_GOAL := dev-up
