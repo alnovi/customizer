@@ -160,7 +160,7 @@ func (a *App) registerAPIv1Actions() {
 }
 
 func (a *App) registerWebActions() {
-	a.Router.PathPrefix(`/`).Handler(action.NewIndexHandler("/app/web/dist"))
+	a.Router.PathPrefix(`/`).Handler(action.NewIndexHandler("/home/alex/Projects/go/alnovi/customizer/web/dist"))
 }
 
 func (a *App) handleClose() {
